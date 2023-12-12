@@ -76,7 +76,17 @@ const backup = async () => {
     filePaths.push(tmpFile);
   }
 
-  const rootFolder = new Date().toLocaleString() + "/";
+  const rootFolder =
+    new Date().getFullYear() +
+    "/" +
+    (new Date().getMonth() + 1) +
+    "/" +
+    new Date().getDate() +
+    "/" +
+    new Date().getHours() +
+    "/" +
+    new Date().getMinutes() +
+    "/";
 
   for (const file of filePaths) {
     await minioClient.fPutObject(
