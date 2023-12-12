@@ -76,16 +76,25 @@ const backup = async () => {
     filePaths.push(tmpFile);
   }
 
+  // Format: XXXX/Month/Day/Hour/Minute
   const rootFolder =
     new Date().getFullYear() +
     "/" +
-    (new Date().getMonth() + 1) +
+    new Date().toLocaleString("default", {
+      month: "long",
+    }) +
     "/" +
-    new Date().getDate() +
+    new Date().toLocaleString("default", {
+      day: "numeric",
+    }) +
     "/" +
-    (new Date().getHours() + 1) +
+    new Date().toLocaleString("default", {
+      hour: "numeric",
+    }) +
     "/" +
-    new Date().getMinutes() +
+    new Date().toLocaleString("default", {
+      minute: "numeric",
+    }) +
     "/";
 
   for (const file of filePaths) {
